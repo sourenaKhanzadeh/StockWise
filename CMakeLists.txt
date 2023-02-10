@@ -15,9 +15,16 @@ set(HEADERS
     include/inventory.hpp
 )
 
+add_subdirectory(external)
+
 # Create the executable
 add_executable(Stockwise ${SOURCES} ${HEADERS})
 
+# Link the libraries
+target_link_libraries(Stockwise PUBLIC
+    cpr::cpr
+)
 # Include the header files
-target_include_directories(Stockwise PUBLIC include)
+target_include_directories(Stockwise 
+    PUBLIC include external/include)
 
